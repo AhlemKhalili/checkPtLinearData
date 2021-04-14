@@ -1,0 +1,37 @@
+ALGORITHM sum_overlapping_Sol2
+VAR
+    set1,set2 : ARRAY_OF INTEGER[INTEGER];
+    l1:= set1.length;
+    l2:=set2.length;
+    set_keys : ARRAY_OF INTEGER[INTEGER];
+    Tab:= HASH_TABLE<INTEGER,INTEGER>;
+    i, count : INTEGER;
+    sum : INTEGER ;
+BEGIN
+    sum := 0
+    FOR i FROM 0 TO l1-1 STEP 1  DO
+        IF (Tab.lookup(set1[i]) = TRUE) THEN
+            count := Tab.get(set1[i]);
+            Tab.insert(set1[i],count+1);
+        ELSE
+            Tab.insert(set1[i],1);
+        END_IF
+    END_FOR
+
+    FOR i FROM 0 TO l2-1 STEP 1  DO
+        IF (Tab.lookup(set2[i]) = TRUE) THEN
+            count := Tab.get(set2[i]);
+            Tab.insert(set2[i],count+1);
+        ELSE
+            Tab.insert(set2[i],1);
+        END_IF
+    END_FOR
+
+    set_keys := Tab.getKeys();
+    FOR i FROM 0 TO set_keys.length -1 STEP 1  DO
+        IF (Tab.get(set_keys[i]) = 2) THEN
+            sum := sum +set_keys[i];
+        END_IF
+    END_FOR
+
+END 

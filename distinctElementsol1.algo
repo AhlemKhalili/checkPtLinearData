@@ -1,0 +1,19 @@
+ALGORITHM distinctElementsol1
+VAR
+    set1 : ARRAY_OF INTEGER[INTEGER];
+    set2 : ARRAY_OF INTEGER[INTEGER];
+    sum,i, j : INTEGER;
+    l1:= set1.length;
+    l2:=set2.length;
+BEGIN
+sum := 0;
+    FOR i FROM 0 TO l1-1 DO
+     FOR j FROM 0 TO l2-1 DO
+        IF (set1[i]<>set2[j]) THEN
+            sum := sum + set1[i];
+            j++;
+        END_IF
+     END_FOR
+   END_FOR
+   write("The sum is:" sum);
+END

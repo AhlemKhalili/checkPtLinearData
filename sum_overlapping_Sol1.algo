@@ -1,0 +1,20 @@
+ALGORITHM sum_overlapping_Sol1
+VAR
+    set1 : ARRAY_OF INTEGER[INTEGER];
+    set2 : ARRAY_OF INTEGER[INTEGER];
+    sum :INTEGER;
+    i,j : INTEGER;
+    l1:= set1.length;
+    l2:=set2.length;
+BEGIN
+    i=0;
+    j=0;
+    sum_distinct=0;
+    FOR i FROM 0 to l1-1 STEP 1 DO
+       FOR j FROM 0 to l2-1 STEP 1 DO
+           IF ( set1[i] = set2[j] ) THEN 
+           sum:=sum + set1[i]+ set2[j];
+       END_FOR
+    END_FOR
+    Write (sum_overlapping)
+END
